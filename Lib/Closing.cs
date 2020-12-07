@@ -270,7 +270,7 @@ namespace letscard_cafe.Lib
 
                 Console.WriteLine((item.IsReply ? "\t" : "") + item.Nickname + " : " + (item.Content.Length > 6 ? item.Content.Substring(0, 6) + "..." : item.Content) + " [" + item.Created_at.ToString("yyyy년 MM dd일 HH시 mm분") + "]");
             }
-            /*
+            
             try
             {
                 var reply_button = comment_list[final.Index].FindElement(By.CssSelector("a.comment_info_button"));
@@ -292,7 +292,7 @@ namespace letscard_cafe.Lib
             {
                 Console.WriteLine(ex.Message);
             }
-            */
+            
             Delay(3000);
 
             return final;
