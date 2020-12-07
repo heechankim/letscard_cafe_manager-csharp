@@ -241,7 +241,7 @@ namespace letscard_cafe.Lib
             var sorted_bid_pool = from bid in bid_pool orderby bid.Bid select bid;
 
             ReplyItem final = null;
-            if (sorted_bid_pool.Last() == null)
+            if (sorted_bid_pool == null)
                 return null;
 
             ReplyItem successful_bid = sorted_bid_pool.Last();
