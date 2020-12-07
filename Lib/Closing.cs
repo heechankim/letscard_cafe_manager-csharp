@@ -108,7 +108,15 @@ namespace letscard_cafe.Lib
             }
 
             // for iframe html 
-            driver.SwitchTo().Frame("cafe_main");
+            try
+            {
+                driver.SwitchTo().Frame("cafe_main");
+            }
+            catch (UnhandledAlertException ex)
+            {
+                return null;
+            }
+            
             var title_text = WaitForVisible(Driver, By.CssSelector("h3.title_text"));
             Console.WriteLine(title_text);
             var ul_comment_list = WaitForVisible(driver, By.CssSelector("ul.comment_list"));
