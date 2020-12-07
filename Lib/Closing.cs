@@ -109,18 +109,11 @@ namespace letscard_cafe.Lib
 
             // for iframe html 
             driver.SwitchTo().Frame("cafe_main");
-
-            Console.WriteLine();
             var title_text = WaitForVisible(Driver, By.CssSelector("h3.title_text"));
             var ul_comment_list = WaitForVisible(driver, By.CssSelector("ul.comment_list"));
             if (ul_comment_list == null)
-            {
                 return null;
-            }
-
-
             var comment_list = ul_comment_list.FindElements(By.CssSelector("li"));
-            Console.WriteLine("ul > li");
 
             /*
             Console.WriteLine(comment.GetAttribute("class") );
@@ -240,11 +233,19 @@ namespace letscard_cafe.Lib
             }
             var sorted_bid_pool = from bid in bid_pool orderby bid.Bid select bid;
 
+            ReplyItem successful_bid;
             ReplyItem final = null;
-            if (sorted_bid_pool == null)
-                return null;
 
-            ReplyItem successful_bid = sorted_bid_pool.Last();
+            try
+            {
+                successful_bid = sorted_bid_pool.Last();
+            }
+            catch (InvalidOperationException error)
+            {
+                return null;
+            }
+            
+            
             foreach(ReplyItem item in sorted_bid_pool)
             {
                 if (item.Bid == successful_bid.Bid)
