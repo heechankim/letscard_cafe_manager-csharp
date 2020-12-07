@@ -110,9 +110,11 @@ namespace letscard_cafe.Lib
             // for iframe html 
             driver.SwitchTo().Frame("cafe_main");
             var title_text = WaitForVisible(Driver, By.CssSelector("h3.title_text"));
+            Console.WriteLine(title_text);
             var ul_comment_list = WaitForVisible(driver, By.CssSelector("ul.comment_list"));
             if (ul_comment_list == null)
                 return null;
+
             var comment_list = ul_comment_list.FindElements(By.CssSelector("li"));
 
             /*
@@ -227,7 +229,6 @@ namespace letscard_cafe.Lib
                         if (item.Bid % 1000 != 0)
                             continue; //추가하지 않음
                     }
-                    Console.WriteLine("before return");
                     bid_pool.Add(item);
                 }
             }
