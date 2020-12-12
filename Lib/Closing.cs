@@ -302,7 +302,7 @@ namespace letscard_cafe.Lib
             }
             
             Delay(3000);
-
+            
             return final;
         }
         private static IWebElement WaitForVisible(IWebDriver driver, By by)
