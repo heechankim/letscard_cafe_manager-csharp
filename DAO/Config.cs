@@ -20,6 +20,59 @@ namespace letscard_cafe.DAO
             table = _table;
             row = table.Rows[0];
         }
+        public char Use_Main
+        {
+            get
+            {
+                return row["USE_MAIN"].ToString()[0];
+            }
+            set
+            {
+                row.BeginEdit();
+                row["USE_MAIN"] = value;
+                row.EndEdit();
+            }
+        }
+        public string MainAccountID
+        {
+            get { return row["MAINACCOUNTID"].ToString(); }
+            set
+            {
+                row.BeginEdit();
+                row["MAINACCOUNTID"] = value;
+                row.EndEdit();
+            }
+        }
+        public string MainAccountPW
+        {
+            get { return row["MAINACCOUNTPW"].ToString(); }
+            set
+            {
+                row.BeginEdit();
+                row["MAINACCOUNTPW"] = value;
+                row.EndEdit();
+            }
+        }
+        public string SubAccountID
+        {
+            get { return row["SUBACCOUNTID"].ToString(); }
+            set
+            {
+                row.BeginEdit();
+                row["SUBACCOUNTID"] = value;
+                row.EndEdit();
+            }
+        }
+        public string SubAccountPW
+        {
+            get { return row["SUBACCOUNTPW"].ToString(); }
+            set
+            {
+                row.BeginEdit();
+                row["SUBACCOUNTPW"] = value;
+                row.EndEdit();
+            }
+        }
         public string Title
         {
             get

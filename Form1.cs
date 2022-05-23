@@ -48,6 +48,7 @@ namespace letscard_cafe
 
             Config_Print();
             Category_Print();
+            Config_Closing_Print();
         }
       
         // Config Logic
@@ -57,6 +58,21 @@ namespace letscard_cafe
             AuctionContent.Text = config.Content;
             AuctionCommonBid.Text = config.CommonBid.ToString();
             AuctionCustomBid.Text = config.CustomBid.ToString();
+        }
+        public void Config_Closing_Print()
+        {
+            if(config.Use_Main == 'Y')
+            {
+                mainAccountRadioButton.Checked = true;
+                CurrentAccountID.Text = config.MainAccountID;
+                CurrentAccountPW.Text = config.MainAccountPW;
+            }
+            else if(config.Use_Main == 'N')
+            {
+                subAccountRadioButton.Checked = true;
+                CurrentAccountID.Text = config.SubAccountID;
+                CurrentAccountPW.Text = config.SubAccountPW;
+            }
         }
         private void ConfigApplyButton_Click(object sender, EventArgs e)
         {
@@ -85,7 +101,7 @@ namespace letscard_cafe
         {
             ConfigPanel.Visible = false;
             LoginBrowser.Visible = true;
-            LoginBrowser.Url = new Uri("http://letscard.ddns.net/naverlogin");
+            LoginBrowser.Url = new Uri("http://letscard.iptime.org:8001/naverlogin");
         }
         
         // Upload Logic
@@ -211,10 +227,18 @@ namespace letscard_cafe
 
             try
             {
-                orm.Select(Auctions.ToString(), "SELECT * FROM " + Auctions.ToString() + " WHERE week = \'" + this.auction_week + "\' ORDER BY num ASC");
+                orm.Select(
+                    Auctions.ToString(), 
+                    "SELECT * FROM " + Auctions.ToString() +
+                    " WHERE week = \'" + this.auction_week + "\' ORDER BY num ASC");
+
                 this.auctions = new Auctions(orm.getTable(Auctions.ToString()));
 
-                orm.Select(Pictures.ToString(), "SELECT * FROM " + Pictures.ToString() + " WHERE week = \'" + this.auction_week + "\'");
+                orm.Select(
+                    Pictures.ToString(),
+                    "SELECT * FROM " + Pictures.ToString() + 
+                    " WHERE week = \'" + this.auction_week + "\'");
+
                 this.pictures = new Pictures(orm.getTable(Pictures.ToString()));
             }
             catch(Exception error)
@@ -671,7 +695,7 @@ namespace letscard_cafe
             ClosingSyncText4.Text = "다음 마감번호 : ";
         }
 
-        public void CreateClosing()
+        public void CreateClosing(string _id, string _pw)
         {
             if (this.closing != null)
             {
@@ -680,7 +704,7 @@ namespace letscard_cafe
             }
             Thread create_closing_thread = new Thread(new ThreadStart( () =>
             {
-                closing = new Closing();
+                closing = new Closing(_id, _pw);
             }));
             create_closing_thread.SetApartmentState(ApartmentState.STA);
             create_closing_thread.Start();
@@ -688,7 +712,7 @@ namespace letscard_cafe
         }
         private void ClosingTestButton_Click(object sender, EventArgs e)
         {
-            CreateClosing();
+            CreateClosing(CurrentAccountID.Text, CurrentAccountPW.Text);
             Delay(3000);
             DateTime closing_at = DateTime.Parse(ClosingTestDate.Value.ToString("yyyy-MM-dd") + " " + ClosingTestTime.Value.ToString("HH:mm:00"));
             closing.SetUrl(ClosingTestUrl.Text);
@@ -807,27 +831,25 @@ namespace letscard_cafe
                     Console.WriteLine( "--다음 경매 종료 까지 " + (closing_at - DateTime.Now).Hours.ToString() + "시간 " + (closing_at - DateTime.Now).Minutes.ToString() + "분 ");
                     Delay(10000);
                 }
-
                 // pass closing time
                 if(closing_at < now)
                 {
                     if (this.closing == null)
                     {
                         Console.WriteLine("closing is null");
-                        CreateClosing();
+                        CreateClosing(CurrentAccountID.Text, CurrentAccountPW.Text);
                     }
                         
                     if (!this.closing.IsLogin)
                     {
                         Console.WriteLine("not login");
-                        this.closing.Login();
+                        this.closing.Login(CurrentAccountID.Text, CurrentAccountPW.Text);
                     }
                         
                     while(!this.closing.IsLogin)
                     {
                         Console.WriteLine("not login");
                     }
-
                     Delay(3000);
                     this.closing.SetArticleId(Convert.ToInt32(item.SubItems[13].Text));
                     Delay(3000);
@@ -1033,6 +1055,50 @@ namespace letscard_cafe
             {
                 GC.Collect();
             }
+        }
+
+        private void accountChangeButton_Click(object sender, EventArgs e)
+        {
+            if(mainAccountRadioButton.Checked == true)
+            {
+                config.Use_Main = 'Y';
+                config.MainAccountID = CurrentAccountID.Text;
+                config.MainAccountPW = CurrentAccountPW.Text;
+            }
+            else if(subAccountRadioButton.Checked == true)
+            {
+                config.Use_Main = 'N';
+                config.SubAccountID = CurrentAccountID.Text;
+                config.SubAccountPW = CurrentAccountPW.Text;
+            }
+            orm.Update(Config.ToString());
+        }
+
+        private void mainAccountRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            CurrentAccountID.Text = config.MainAccountID;
+            CurrentAccountPW.Text = config.MainAccountPW;
+        }
+
+        private void subAccountRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            CurrentAccountID.Text = config.SubAccountID;
+            CurrentAccountPW.Text = config.SubAccountPW;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Console.WriteLine("closing!!");
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Console.WriteLine("closed!!");
         }
     }
     // Upload Class

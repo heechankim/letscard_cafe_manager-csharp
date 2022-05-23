@@ -23,6 +23,9 @@ namespace letscard_cafe.Lib
         public ChromeDriver Driver => driver;
         public bool IsLogin => is_login;
 
+        string id;
+        string pw;
+
         private static bool Delay(int MS)
         {
             DateTime ThisMoment = DateTime.Now;
@@ -48,14 +51,16 @@ namespace letscard_cafe.Lib
 
             driver.Navigate().GoToUrl(url);
         }
-        public Closing()
+        public Closing(string _id, string _pw)
         {
+            this.id = _id;
+            this.pw = _pw;
             Initialize();
         }
         private void Initialize()
         {
             CreateDriver();
-            Login();
+            Login(this.id, this.pw);
         }
         private void CreateDriver()
         {
@@ -67,10 +72,10 @@ namespace letscard_cafe.Lib
 
             driver = new ChromeDriver(DriverService, options);
         }
-        public void Login()
+        public void Login(string _id, string _pw)
         {
-            string id = "hroal";
-            string pw = "@*cr6812hc#*";
+            string id = _id;
+            string pw = _pw;
 
             driver.Navigate().GoToUrl("https://www.naver.com");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);

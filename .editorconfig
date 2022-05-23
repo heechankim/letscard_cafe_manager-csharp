@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# IDE0058: 식 값은 절대 사용되지 않습니다.
+csharp_style_unused_value_expression_statement_preference = discard_variable:none

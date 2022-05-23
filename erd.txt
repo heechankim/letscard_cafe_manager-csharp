@@ -1,0 +1,72 @@
+﻿-----------------c#-----------------
+AuctionIndex
+AuctionCategory
+AuctionCategoryName
+AuctionPicPath1
+AuctionPic1
+AuctionPicPath2
+AuctionPic2
+AuctionClosingTime
+AuctionBid
+
+-----------------database-----------------
+id
+num
+
+title
+content
+
+category
+articleid
+week
+closing_at
+created_at
+
+-----------------excel-----------------
+경매종료일 -> closing_at
+리스트 -> title
+
+낙찰자 --> 따로 빠짐
+낙찰금액  --> 따로 빠짐
+
+내용 -> content
+
+판매자
+싱글, 랏 구분
+등록수수료
+기본수수료
+
+수수료 --> 따로 빠짐
+입금해줄금액 --> 따로 빠짐
+
+-----------------new-----------------
+(*) id : INDEX / NUMBER
+num : AUCTION / NUMBER
+week : VARCHAR2
+category : NUMBER
+articleid : NUMBER
+
+seller_name : VARCHAR2
+
+item_type : VARCHAR2
+item_upload_fee : NUMBER
+
+[item_basic_fee : NUMBER = bidding_money * 0.1]
+[item_fee : NUMBER = item_upload_fee + item_basic_fee]
+[seller_get = bidding_money - item_fee]
+
+path1 : VARCHAR2
+path2 : VARCHAR2
+
+closing_at : DATE
+created_at : DATE
+
+-----------------arrange-----------------
+(*)id : NUMBER
+
+num : AUCTION / NUMBER
+week : VARCHAR2
+
+bidder : VARCHAR2
+bidding_money : NUMBER
+

@@ -18,10 +18,15 @@ namespace letscard_cafe
         {
             try
             {
-                connection_string = "User Id=chan; Password=cr6812hc; " +
+                /*connection_string = "User Id=chan; Password=cr6812hc; " +
                 "Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)" +
                 "(HOST = letscard.ciyidr0ylaug.ap-northeast-2.rds.amazonaws.com)" +
-                "(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = orcl)));";
+                "(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = orcl)));";*/
+
+                connection_string = "User Id=LETSCARD2; Password=letscard; " +
+                "Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)" +
+                "(HOST = letscard.iptime.org)" +
+                "(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)));";
 
                 conn = new OracleConnection(this.connection_string);
             }

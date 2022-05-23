@@ -36,14 +36,18 @@
             this.ConfigButton = new System.Windows.Forms.Button();
             this.LoginButton = new System.Windows.Forms.Button();
             this.ConfigPanel = new System.Windows.Forms.Panel();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.CurrentAccountPW = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.CurrentAccountID = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.accountChangeButton = new System.Windows.Forms.Button();
+            this.subAccountRadioButton = new System.Windows.Forms.RadioButton();
+            this.mainAccountRadioButton = new System.Windows.Forms.RadioButton();
             this.AuctionCategoryList = new System.Windows.Forms.ListView();
             this.CategoryTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CategoryValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ConfigApplyButton = new System.Windows.Forms.Button();
-            this.AuctionCategoryNumberBox = new System.Windows.Forms.TextBox();
-            this.AuctionCategoryDeleteButton = new System.Windows.Forms.Button();
-            this.AuctionCategoryAddButton = new System.Windows.Forms.Button();
-            this.AuctionCategoryTextBox = new System.Windows.Forms.TextBox();
             this.AuctionCategoryLabel = new System.Windows.Forms.Label();
             this.AuctionCustomBid = new System.Windows.Forms.TextBox();
             this.AuctionCustomBidLabel = new System.Windows.Forms.Label();
@@ -168,6 +172,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.ConfigPanel.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.UploadPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -284,12 +289,9 @@
             // 
             // ConfigPanel
             // 
+            this.ConfigPanel.Controls.Add(this.groupBox9);
             this.ConfigPanel.Controls.Add(this.AuctionCategoryList);
             this.ConfigPanel.Controls.Add(this.ConfigApplyButton);
-            this.ConfigPanel.Controls.Add(this.AuctionCategoryNumberBox);
-            this.ConfigPanel.Controls.Add(this.AuctionCategoryDeleteButton);
-            this.ConfigPanel.Controls.Add(this.AuctionCategoryAddButton);
-            this.ConfigPanel.Controls.Add(this.AuctionCategoryTextBox);
             this.ConfigPanel.Controls.Add(this.AuctionCategoryLabel);
             this.ConfigPanel.Controls.Add(this.AuctionCustomBid);
             this.ConfigPanel.Controls.Add(this.AuctionCustomBidLabel);
@@ -306,6 +308,91 @@
             this.ConfigPanel.Name = "ConfigPanel";
             this.ConfigPanel.Size = new System.Drawing.Size(1383, 692);
             this.ConfigPanel.TabIndex = 1;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.CurrentAccountPW);
+            this.groupBox9.Controls.Add(this.label16);
+            this.groupBox9.Controls.Add(this.CurrentAccountID);
+            this.groupBox9.Controls.Add(this.label7);
+            this.groupBox9.Controls.Add(this.accountChangeButton);
+            this.groupBox9.Controls.Add(this.subAccountRadioButton);
+            this.groupBox9.Controls.Add(this.mainAccountRadioButton);
+            this.groupBox9.Font = new System.Drawing.Font("굴림", 12F);
+            this.groupBox9.Location = new System.Drawing.Point(398, 287);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(383, 172);
+            this.groupBox9.TabIndex = 17;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "뎃글마감 아이디변경";
+            // 
+            // CurrentAccountPW
+            // 
+            this.CurrentAccountPW.Location = new System.Drawing.Point(222, 77);
+            this.CurrentAccountPW.Name = "CurrentAccountPW";
+            this.CurrentAccountPW.Size = new System.Drawing.Size(151, 26);
+            this.CurrentAccountPW.TabIndex = 6;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("굴림", 8.25F);
+            this.label16.Location = new System.Drawing.Point(171, 77);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(24, 11);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "PW";
+            // 
+            // CurrentAccountID
+            // 
+            this.CurrentAccountID.Location = new System.Drawing.Point(222, 40);
+            this.CurrentAccountID.Name = "CurrentAccountID";
+            this.CurrentAccountID.Size = new System.Drawing.Size(151, 26);
+            this.CurrentAccountID.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("굴림", 8.25F);
+            this.label7.Location = new System.Drawing.Point(171, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(16, 11);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "ID";
+            // 
+            // accountChangeButton
+            // 
+            this.accountChangeButton.Location = new System.Drawing.Point(272, 119);
+            this.accountChangeButton.Name = "accountChangeButton";
+            this.accountChangeButton.Size = new System.Drawing.Size(101, 40);
+            this.accountChangeButton.TabIndex = 2;
+            this.accountChangeButton.Text = "적용";
+            this.accountChangeButton.UseVisualStyleBackColor = true;
+            this.accountChangeButton.Click += new System.EventHandler(this.accountChangeButton_Click);
+            // 
+            // subAccountRadioButton
+            // 
+            this.subAccountRadioButton.AutoSize = true;
+            this.subAccountRadioButton.Location = new System.Drawing.Point(23, 77);
+            this.subAccountRadioButton.Name = "subAccountRadioButton";
+            this.subAccountRadioButton.Size = new System.Drawing.Size(116, 20);
+            this.subAccountRadioButton.TabIndex = 1;
+            this.subAccountRadioButton.TabStop = true;
+            this.subAccountRadioButton.Text = "카페 부 계정";
+            this.subAccountRadioButton.UseVisualStyleBackColor = true;
+            this.subAccountRadioButton.CheckedChanged += new System.EventHandler(this.subAccountRadioButton_CheckedChanged);
+            // 
+            // mainAccountRadioButton
+            // 
+            this.mainAccountRadioButton.AutoSize = true;
+            this.mainAccountRadioButton.Location = new System.Drawing.Point(23, 40);
+            this.mainAccountRadioButton.Name = "mainAccountRadioButton";
+            this.mainAccountRadioButton.Size = new System.Drawing.Size(77, 20);
+            this.mainAccountRadioButton.TabIndex = 0;
+            this.mainAccountRadioButton.TabStop = true;
+            this.mainAccountRadioButton.Text = "cbx900";
+            this.mainAccountRadioButton.UseVisualStyleBackColor = true;
+            this.mainAccountRadioButton.CheckedChanged += new System.EventHandler(this.mainAccountRadioButton_CheckedChanged);
             // 
             // AuctionCategoryList
             // 
@@ -341,42 +428,6 @@
             this.ConfigApplyButton.Text = "변경사항저장";
             this.ConfigApplyButton.UseVisualStyleBackColor = true;
             this.ConfigApplyButton.Click += new System.EventHandler(this.ConfigApplyButton_Click);
-            // 
-            // AuctionCategoryNumberBox
-            // 
-            this.AuctionCategoryNumberBox.Location = new System.Drawing.Point(389, 402);
-            this.AuctionCategoryNumberBox.Margin = new System.Windows.Forms.Padding(5);
-            this.AuctionCategoryNumberBox.Name = "AuctionCategoryNumberBox";
-            this.AuctionCategoryNumberBox.Size = new System.Drawing.Size(304, 21);
-            this.AuctionCategoryNumberBox.TabIndex = 14;
-            // 
-            // AuctionCategoryDeleteButton
-            // 
-            this.AuctionCategoryDeleteButton.Location = new System.Drawing.Point(612, 488);
-            this.AuctionCategoryDeleteButton.Margin = new System.Windows.Forms.Padding(5);
-            this.AuctionCategoryDeleteButton.Name = "AuctionCategoryDeleteButton";
-            this.AuctionCategoryDeleteButton.Size = new System.Drawing.Size(141, 60);
-            this.AuctionCategoryDeleteButton.TabIndex = 13;
-            this.AuctionCategoryDeleteButton.Text = "삭제";
-            this.AuctionCategoryDeleteButton.UseVisualStyleBackColor = true;
-            // 
-            // AuctionCategoryAddButton
-            // 
-            this.AuctionCategoryAddButton.Location = new System.Drawing.Point(401, 488);
-            this.AuctionCategoryAddButton.Margin = new System.Windows.Forms.Padding(5);
-            this.AuctionCategoryAddButton.Name = "AuctionCategoryAddButton";
-            this.AuctionCategoryAddButton.Size = new System.Drawing.Size(141, 60);
-            this.AuctionCategoryAddButton.TabIndex = 12;
-            this.AuctionCategoryAddButton.Text = "추가";
-            this.AuctionCategoryAddButton.UseVisualStyleBackColor = true;
-            // 
-            // AuctionCategoryTextBox
-            // 
-            this.AuctionCategoryTextBox.Location = new System.Drawing.Point(389, 348);
-            this.AuctionCategoryTextBox.Margin = new System.Windows.Forms.Padding(5);
-            this.AuctionCategoryTextBox.Name = "AuctionCategoryTextBox";
-            this.AuctionCategoryTextBox.Size = new System.Drawing.Size(304, 21);
-            this.AuctionCategoryTextBox.TabIndex = 11;
             // 
             // AuctionCategoryLabel
             // 
@@ -1543,6 +1594,9 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.LoginPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -1552,6 +1606,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.ConfigPanel.ResumeLayout(false);
             this.ConfigPanel.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.UploadPage.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -1624,10 +1680,6 @@
         private System.Windows.Forms.ColumnHeader AuctionClosingTime;
         private System.Windows.Forms.ListView AuctionCategoryList;
         private System.Windows.Forms.Button ConfigApplyButton;
-        private System.Windows.Forms.TextBox AuctionCategoryNumberBox;
-        private System.Windows.Forms.Button AuctionCategoryDeleteButton;
-        private System.Windows.Forms.Button AuctionCategoryAddButton;
-        private System.Windows.Forms.TextBox AuctionCategoryTextBox;
         private System.Windows.Forms.Label AuctionCategoryLabel;
         private System.Windows.Forms.TextBox AuctionCustomBid;
         private System.Windows.Forms.Label AuctionCustomBidLabel;
@@ -1724,6 +1776,14 @@
         private System.Windows.Forms.Button ClosingSaveButton;
         private System.Windows.Forms.ColumnHeader ClosingFee;
         private System.Windows.Forms.SaveFileDialog SaveFileDialog;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button accountChangeButton;
+        private System.Windows.Forms.RadioButton subAccountRadioButton;
+        private System.Windows.Forms.RadioButton mainAccountRadioButton;
+        private System.Windows.Forms.TextBox CurrentAccountPW;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox CurrentAccountID;
+        private System.Windows.Forms.Label label7;
     }
 }
 
